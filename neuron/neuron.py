@@ -1,7 +1,6 @@
 # Modules
 ## External
 from __future__ import annotations
-from typing import List
 import numpy as np
 
 # Parameters
@@ -11,7 +10,9 @@ import numpy as np
 # Classes
 class NeuronBase:
     # Constructor
-    def __init__(self, color: str) -> NeuronBase:
+    def __init__(self, pos_relative: np.ndarray, color: str) -> NeuronBase:
+        # Position
+        self.pos_relative = pos_relative
         # Color
         self.color = color
         # Glow
