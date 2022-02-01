@@ -5,8 +5,17 @@ from typing import List
 import numpy as np
 
 # Parameters
+sin = np.math.sin
+cos = np.math.cos
 
 # Methods
+## 3D Spatial Rotations
+def general_rotation( a: float, b: float, g: float ) -> np.ndarray:
+    return np.array([
+        [ cos(a)*cos(b) , cos(a)*sin(b)*sin(g) - sin(a)*cos(g) , cos(a)*sin(b)*cos(g) + sin(a)*sin(g) ],
+        [ sin(a)*cos(b) , sin(a)*sin(b)*sin(g) + cos(a)*cos(g) , sin(a)*sin(b)*cos(g) - cos(a)*sin(g) ],
+        [ -sin(b)       , cos(b)*sin(g)                        , cos(b)*cos(g)                        ],
+    ])
 
 # Classes
 ## Bone Base
@@ -40,21 +49,24 @@ class BoneBase:
         return
     # Bone Tip
     @property
-    def tip_pos( self ) -> np.np.ndarray:
-        phi, theta = self.angles
-        gamma = self.rotation
-        # Angles
-        pos = self.bone_width * np.array([
-            np.math.cos(phi) * np.math.cos(theta),
-            np.math.sin(phi) * np.math.cos(theta),
-            np.math.sin(theta),
-        ])
-        # Rotation
-        mat_rot = np.array([
-            [ 1, 0, 0 ],
-            [ 0, np.math.cos(gamma), -np.math.sin(gamma) ],
-            [ 0, np.math.sin(gamma), np.math.cos(gamma) ],
-        ])
-        pos = np.matmul( mat_rot, pos )
+    def tip_pos( self ) -> np.ndarray:
+        pos = np.matmul(
+            self.rotation_angles,
+            np.array([ self.bone_width, 0, 0 ])
+        )
         #
         return pos
+    # Rotation Angles
+    @property
+    def rotation_angles( self ) -> np.ndarray:
+        phi, theta = self.angles
+        return general_rotation( phi, theta, 0.0 )
+    @property
+    def rotation_angles_inv( self ) -> np.ndarray:
+        phi, theta = self.angles
+        return general_rotation( -phi, -theta, 0.0 )
+    # Matrix Rotation
+    @property
+    def matrix_rotation( self ) -> np.ndarray:
+        gamma = self.rotation
+        return general_rotation( 0.0, 0.0, gamma )
