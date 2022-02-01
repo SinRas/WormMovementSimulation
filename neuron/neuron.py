@@ -17,7 +17,7 @@ class NeuronBase:
         # Color
         self.color = color
         # Glow
-        self.glow_magnitude = 0.0
+        self.glow_magnitude = 1.0
         self.glow_phase = 0.0
         self.glow_omega = 0.0
         #
