@@ -1,0 +1,6 @@
+# Data
+data
+
+# Python
+**/*.pyc
+**/__pycache__
