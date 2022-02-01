@@ -8,6 +8,7 @@ import numpy as np
 # Methods
 
 # Classes
+## Neuron Base
 class NeuronBase:
     # Constructor
     def __init__(self, pos_relative: np.ndarray, color: str) -> NeuronBase:
