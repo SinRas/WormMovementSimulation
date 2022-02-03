@@ -15,8 +15,9 @@ from neuron.neuron import NeuronBase
 ## Segment Base
 class SegmentBase:
     # Constructor
-    def __init__(self, bone: BoneBase, neurons: List[NeuronBase]) -> SegmentBase:
+    def __init__(self, name: str, bone: BoneBase, neurons: List[NeuronBase]) -> SegmentBase:
         # Parameters
+        self.name = name
         self.bone = bone
         self.neurons = neurons
         #
