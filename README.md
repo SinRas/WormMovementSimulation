@@ -8,6 +8,7 @@ This module is intended to create 2D video trajectories of 3D neuron structures,
 - [x] add base classes
 - [x] add animation samples
 - [ ] add exporting as .npz files, e.g. projected 2d image time series and individual neuron traces
+- [ ] more realistic exporting, e.g. add noises/blurring to glow, observation and video quality
 - [ ] add segment rotation smoothing, e.g. interpolate rotation angles between neighboring segments
 - [ ] add realistic dynamics samples, e.g. accelerations that mimic real movements, glow spiking dynamics
 - [ ] use real life structural examples, e.g. code to generate real worm neuron positions and mimic worm movements
