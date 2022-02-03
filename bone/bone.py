@@ -50,12 +50,17 @@ class BoneBase:
     # Bone Tip
     @property
     def tip_pos( self ) -> np.ndarray:
-        pos = np.matmul(
+        pos = self.base_pos + np.matmul(
             self.rotation_angles,
             np.array([ self.bone_width, 0, 0 ])
         )
         #
         return pos
+    # Bone Tip
+    @property
+    def base_pos( self ) -> np.ndarray:
+        return self.bone_previous.tip_pos if self.bone_previous else np.zeros(3)
+
     # Rotation Angles
     @property
     def rotation_angles( self ) -> np.ndarray:
