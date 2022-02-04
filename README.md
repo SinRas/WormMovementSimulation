@@ -13,3 +13,6 @@ This module is intended to create 2D video trajectories of 3D neuron structures,
 - [ ] add realistic dynamics samples, e.g. accelerations that mimic real movements, glow spiking dynamics
 - [ ] use real life structural examples, e.g. code to generate real worm neuron positions and mimic worm movements
 - [ ] restructure base classes -> move positions/connections to segments rather than bones (or not!?)
+- [ ] add cli tool and exporting via config file
+- [ ] add background selection and gradient coloring of neurons
+- [ ] add layered observations export, e.g. like confocal imaging of 3D bodies
